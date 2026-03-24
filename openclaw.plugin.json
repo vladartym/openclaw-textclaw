@@ -1,0 +1,35 @@
+{
+  "id": "textclaw",
+  "name": "TextClaw",
+  "description": "iMessage relay channel via outbound WebSocket",
+  "channels": ["textclaw"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "textclawUrl": {
+        "type": "string",
+        "description": "TextClaw API base URL"
+      },
+      "apiKey": {
+        "type": "string",
+        "description": "Your BYOC API key from TextClaw"
+      },
+      "dmPolicy": {
+        "type": "string",
+        "enum": ["open", "allowlist", "pairing", "disabled"],
+        "default": "open"
+      },
+      "allowFrom": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      }
+    },
+    "required": ["textclawUrl", "apiKey"]
+  },
+  "uiHints": {
+    "apiKey": { "label": "API Key", "sensitive": true },
+    "textclawUrl": { "label": "TextClaw Server URL", "placeholder": "https://textclaw.now" }
+  }
+}
